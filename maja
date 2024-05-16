@@ -5,18 +5,26 @@ namespace ConsoleApp1
     class Program
     {
         static void Main()
+        
         {
-            Console.WriteLine("Millist kujundit soovid?\n Kirjuta maja...");
+            Console.WriteLine("Millist kujundit soovid?\n teemant voi maja...");
             string valik = Console.ReadLine().ToLower();
 
+            
             switch (valik)
             {
                 case "maja":
                     MajaInfo();
                     break;
+
+                case "teemant":
+                    TeemandiInfo();
+                break;
+
                 default:
                     Console.WriteLine("Sellist kujundit ei ole valikus.");
                     break;
+             
             }
         }
 
@@ -25,7 +33,7 @@ namespace ConsoleApp1
             Console.WriteLine("Sisesta ruudu külje pikkus:");
             int kylg = Convert.ToInt32(Console.ReadLine());
 
-            int tahemarke = kylg + 1;
+            int tahemarke = kylg + 2;
 
             for (int i = 0; i < tahemarke; i++)
             {
@@ -46,6 +54,45 @@ namespace ConsoleApp1
                 for (int j = 0; j < kylg; j++)
                 {
                     Console.Write(" *");
+                }
+                Console.WriteLine();
+            }
+        }
+        static void TeemandiInfo()
+        {
+            Console.WriteLine("Sisesta teemanti diagonaalide pikkused (vaheldumisi):");
+            int diag1 = Convert.ToInt32(Console.ReadLine());
+            int diag2 = Convert.ToInt32(Console.ReadLine());
+
+            int poolDiag1 = diag1 / 2;
+            int poolDiag2 = diag2 / 2;
+
+            Console.WriteLine("Teemant:");
+
+            for (int i = 0; i <= diag1 / 2; i++)
+            {
+                for (int j = 0; j <= diag1 / 2 - i; j++)
+                {
+                    Console.Write(" ");
+                }
+
+                for (int k = 0; k < 2 * i - 1; k++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine();
+            }
+
+            for (int i = diag1 / 2 - 1; i >= 0; i--)
+            {
+                for (int j = 0; j <= diag1 / 2 - i; j++)
+                {
+                    Console.Write(" ");
+                }
+
+                for (int k = 0; k < 2 * i - 1; k++)
+                {
+                    Console.Write("*");
                 }
                 Console.WriteLine();
             }
